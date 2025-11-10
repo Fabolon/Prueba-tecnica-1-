@@ -1,24 +1,37 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { mongooseConection } from "./src/config/db.js";
-import departamentoRouter from "./routes/departamentos.routes.js";
-import empleadoRouter from "./routes/empleados.routes.js";
+import { dbConnect } from "./src/config/db.js";
+import departamentosRouter from "./src/routes/departamentos.routes.js";
+import empleadosRouter from "./src/routes/empleados.routes.js";
+
+dotenv.config();
 
 const app = express();
-dotenv.config();
-const port = process.env.PORT;
-mongooseConection();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json()); 
+app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.send("Bienvenido a la API de Prueba-1");
+  res.send("Bienvenido a la API de Prueba-1");
 });
-app.use(cors());
-app.use("/departamentos", departamentoRouter);
-app.use("/empleados", empleadoRouter);
 
-app.listen(port, () => {
-    console.log(`Servidor ejecutándose en http://localhost:${port}`);
-});
+app.use("/departamentos", departamentosRouter);
+app.use("/empleados", empleadosRouter);
+
+const startServer = async () => {
+  try {
+    await dbConnect();
+    app.listen(PORT, () => {
+      console.log(`Servidor escuchando en http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("No se pudo conectar a la base de datos", error);
+    process.exit(1);
+  }
+};
+
+startServer();
+
+export default app;
