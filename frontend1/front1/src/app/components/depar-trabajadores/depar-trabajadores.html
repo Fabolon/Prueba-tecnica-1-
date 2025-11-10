@@ -1,1 +1,8 @@
-<p>depar-trabajadores works!</p>
+<div>
+	<h4>Empleados del departamento {{ departamentoID }}</h4>
+	<ul>
+		<li *ngFor="let trabajador of trabajadores">
+      {{ trabajador.nombre }} - {{ trabajador.cargo || 'Sin puesto' }}
+    </li>
+	</ul>
+</div>

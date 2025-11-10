@@ -1,0 +1,24 @@
+<main class="layout">
+  <header>
+    <div>
+      <h1>{{ title }}</h1>
+      <p class="subtitle">Panel de gestión de departamentos y trabajadores</p>
+    </div>
+
+    <nav>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        Departamentos
+      </a>
+      <a routerLink="/departamentos/nuevo" routerLinkActive="active">
+        Nuevo departamento
+      </a>
+      <a routerLink="/trabajadores" routerLinkActive="active">
+        Trabajadores
+      </a>
+    </nav>
+  </header>
+
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>

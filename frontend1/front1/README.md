@@ -1,59 +1,57 @@
-# Front1
+# Front1 – Gestión de Departamentos y Trabajadores
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+Aplicación Angular (CLI v20) pensada como base para un desafío de módulo. Permite administrar departamentos y trabajadores de manera totalmente local usando servicios in-memory.
 
-## Development server
+## Características
+- **Componentes standalone**:
+  - `DepartamentosListComponent`: lista y elimina departamentos.
+  - `DepartamentoFormComponent`: crea/edita departamentos.
+  - `TrabajadoresComponent` y `DeparTrabajadoresComponent`: muestran trabajadores y filtran por departamento.
+- **Servicios y modelos**:
+  - `DepartamentoService` y `TrabajadoresService` exponen operaciones CRUD en memoria.
+  - Interfaces `Departamento` y `Trabajador` centralizan el tipado.
+- **Sin pruebas unitarias** (se generó el proyecto con `--skip-tests`).
 
-To start a local development server, run:
+## Requisitos
+- Node.js 18+
+- npm 9+
 
+## Scripts disponibles
 ```bash
-ng serve
+# Desarrollo (http://localhost:4200)
+npm start
+
+# Compilación producción
+npm run build
+```
+> Los servicios usan datos locales, por lo que no se requiere backend.
+
+## Estructura relevante
+```
+src/app/
+  app.component.{ts,html,css}
+  app.module.ts
+  app-routing.module.ts
+  app.routes.ts
+  models/
+    departamento.model.ts
+    trabajador.model.ts
+  services/
+    departamento.service.ts
+    trabajadores.service.ts
+  components/
+    departamentos/
+      departamentos-lista.{ts,html}
+      departamentos-form.{ts,html}
+    trabajadores/
+      trabajadores-form.{ts,html}
+    depar-trabajadores/
+      depar-trabajadores.{ts,html}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Próximos pasos sugeridos
+1. Integrar routing y vistas para navegar entre listas y formularios.
+2. Conectar los servicios a una API real (REST o GraphQL).
+3. Añadir validaciones reactivas y feedback visual.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+¡Listo para extenderse según las necesidades del desafío!***

@@ -1,0 +1,9 @@
+<div>
+	<h3>Departamentos</h3>
+	<ul>
+		<li *ngFor="let d of departamentos">
+			{{ d.nombre || 'Sin nombre' }}
+			<button type="button" (click)="eliminar(d.id)">Eliminar</button>
+		</li>
+	</ul>
+</div>
